@@ -1,17 +1,13 @@
 package springboot_demo.springcloud.controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import springboot_demo.springcloud.controller.req.UserInfo;
 import springboot_demo.springcloud.handler.NettyClient;
 import springboot_demo.springcloud.utils.MethodInvokeMeta;
-import org.apache.commons.collections.CollectionUtils;
 
 @RestController
 public class FristController {
@@ -27,10 +23,10 @@ public class FristController {
     
     @RequestMapping("/netty")
     public String getDoc(){
-    	List<Integer> list = new ArrayList<>();
-    	NettyClient client = new NettyClient("127.0.0.1", 11111);
-    	MethodInvokeMeta data = new MethodInvokeMeta();
-    	client.remoteCall(data, 0);
+    	NettyClient client = new NettyClient("127.0.0.1", 8090);
+    	UserInfo user = new UserInfo(1,"小明","男");
+    	MethodInvokeMeta data = new MethodInvokeMeta(user);
+    	client.remoteCall(data, 3);
     	return "success";
     }
 }
