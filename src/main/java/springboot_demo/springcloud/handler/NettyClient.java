@@ -22,8 +22,8 @@ public class NettyClient {
    private Logger logger = LoggerFactory.getLogger(MBeanServer.class);
    private Bootstrap bootstrap;
    private EventLoopGroup worker;
-   private int port = 11111;
-   private String url = "127.0.0.1";
+   private int port = 8090;
+   private String url = "192.168.0.254";
    private int MAX_RETRY_TIMES = 10;
 
    public NettyClient(String url, int port) {
